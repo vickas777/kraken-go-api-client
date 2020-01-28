@@ -399,6 +399,11 @@ type WithdrawInfoResponse struct {
 	Fee    big.Float `json:"fee"`
 }
 
+// WalletTransferResponse is the response type sa WalletTransfer query to the Kraken API
+type WalletTransferResponse struct {
+	RefID int `json:"refid"`
+}
+
 // GetPairTickerInfo is a helper method that returns given `pair`'s `PairTickerInfo`
 func (v *TickerResponse) GetPairTickerInfo(pair string) PairTickerInfo {
 	r := reflect.ValueOf(v)

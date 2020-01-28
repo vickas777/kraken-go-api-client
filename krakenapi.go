@@ -61,6 +61,7 @@ var privateMethods = []string{
 	"Withdraw",
 	"WithdrawStatus",
 	"WithdrawCancel",
+	"WalletTransfer",
 }
 
 // These represent the minimum order sizes for the respective coins
@@ -466,6 +467,20 @@ func (api *KrakenApi) WithdrawInfo(asset string, key string, amount *big.Float) 
 		return nil, err
 	}
 	return resp.(*WithdrawInfoResponse), nil
+}
+
+// WalletTransfer returns transfer between addresses information
+func (api *KrakenApi) WalletTransfer(asset string, from string, to string, amount *big.Float) (*WalletTransferResponse, error) {
+	resp, err := api.queryPrivate("WalletTransfer", url.Values{
+		"asset":  {asset},
+		"from":   {from},
+		"to":     {to},
+		"amount": {amount.String()},
+	}, &WalletTransferResponse{})
+	if err != nil {
+		return nil, err
+	}
+	return resp.(*WalletTransferResponse), nil
 }
 
 // Query sends a query to Kraken api for given method and parameters
