@@ -175,7 +175,7 @@ func (api *KrakenApi) TradesHistory(start int64, end int64, args map[string]stri
 func (api *KrakenApi) Trades(pair string, since int64) (*TradesResponse, error) {
 	values := url.Values{"pair": {pair}}
 	if since > 0 {
-		values.Set("since", strconv.FormatInt(since, 10))
+		values.Set("since", strconv.FormatInt(since, 18))
 	}
 	resp, err := api.queryPublic("Trades", values, nil)
 	if err != nil {

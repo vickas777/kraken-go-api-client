@@ -388,7 +388,7 @@ type DepositAddressesResponse []struct {
 
 // WithdrawResponse is the response type of a Withdraw query to the Kraken API.
 type WithdrawResponse struct {
-	RefID int `json:"refid"`
+	RefID string `json:"refid"`
 }
 
 // WithdrawInfoResponse is the response type showing withdrawal information for a selected withdrawal method.
@@ -401,7 +401,7 @@ type WithdrawInfoResponse struct {
 
 // WalletTransferResponse is the response type sa WalletTransfer query to the Kraken API
 type WalletTransferResponse struct {
-	RefID int `json:"refid"`
+	RefID string `json:"refid"`
 }
 
 // GetPairTickerInfo is a helper method that returns given `pair`'s `PairTickerInfo`
@@ -534,12 +534,13 @@ type Order struct {
 	Cost           float64          `json:"cost,string"`
 	Fee            float64          `json:"fee,string"`
 	Price          float64          `json:"price,string"`
-	StopPrice      float64          `json:"stopprice.string"`
+	StopPrice      float64          `json:"stopprice,string"`
 	LimitPrice     float64          `json:"limitprice,string"`
 	Misc           string           `json:"misc"`
 	OrderFlags     string           `json:"oflags"`
 	CloseTime      float64          `json:"closetm"`
 	Reason         string           `json:"reason"`
+	Trade          []string         `json:trades`
 }
 
 // ClosedOrdersResponse represents a list of closed orders, indexed by id
