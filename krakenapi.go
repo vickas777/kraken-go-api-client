@@ -456,6 +456,17 @@ func (api *KrakenApi) Withdraw(asset string, key string, amount *big.Float) (*Wi
 	return resp.(*WithdrawResponse), nil
 }
 
+// WithdrawStatus returns all withdraws were made
+func (api *KrakenApi) WithdrawStatus(asset string) (*WithdrawStatusResponse, error) {
+	resp, err := api.queryPrivate("WithdrawStatus", url.Values{
+		"asset": {asset},
+	}, &WithdrawStatusResponse{})
+	if err != nil {
+		return nil, err
+	}
+	return resp.(*WithdrawStatusResponse), nil
+}
+
 // WithdrawInfo returns withdrawal information
 func (api *KrakenApi) WithdrawInfo(asset string, key string, amount *big.Float) (*WithdrawInfoResponse, error) {
 	resp, err := api.queryPrivate("WithdrawInfo", url.Values{

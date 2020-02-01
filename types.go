@@ -391,6 +391,20 @@ type WithdrawResponse struct {
 	RefID string `json:"refid"`
 }
 
+// WithdrawStatusResponse is the response type of a WithdrawStatus query to the Kraken API.
+type WithdrawStatusResponse []struct {
+	Method string    `json:"method"`
+	AClass string    `json:"aclass"`
+	Asset  string    `json:"asset"`
+	RefID  string    `json:"refid"`
+	TxId   string    `json:"txid"`
+	Info   string    `json:"info"`
+	Amount big.Float `json:"amount"`
+	Fee    big.Float `json:"fee"`
+	Time   float64   `json:"time"`
+	Status string    `json:"status"`
+}
+
 // WithdrawInfoResponse is the response type showing withdrawal information for a selected withdrawal method.
 type WithdrawInfoResponse struct {
 	Method string    `json:"method"`
