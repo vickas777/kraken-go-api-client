@@ -392,7 +392,9 @@ type WithdrawResponse struct {
 }
 
 // WithdrawStatusResponse is the response type of a WithdrawStatus query to the Kraken API.
-type WithdrawStatusResponse []struct {
+type WithdrawStatusResponse []WithdrawStatus
+
+type WithdrawStatus struct {
 	Method string    `json:"method"`
 	AClass string    `json:"aclass"`
 	Asset  string    `json:"asset"`
