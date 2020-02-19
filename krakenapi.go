@@ -443,6 +443,18 @@ func (api *KrakenApi) DepositAddresses(asset string, method string) (*DepositAdd
 	return resp.(*DepositAddressesResponse), nil
 }
 
+// DepositStatus returns all deposits were received
+func (api *KrakenApi) DepositStatus(asset string, method string) (*DepositStatusResponse, error) {
+	resp, err := api.queryPrivate("WithdrawStatus", url.Values{
+		"asset":  {asset},
+		"method": {method},
+	}, &DepositStatusResponse{})
+	if err != nil {
+		return nil, err
+	}
+	return resp.(*DepositStatusResponse), nil
+}
+
 // Withdraw executes a withdrawal, returning a reference ID
 func (api *KrakenApi) Withdraw(asset string, key string, amount *big.Float) (*WithdrawResponse, error) {
 	resp, err := api.queryPrivate("Withdraw", url.Values{
