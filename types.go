@@ -217,6 +217,7 @@ type AssetPairInfo struct {
 type AssetsResponse struct {
 	ADA  AssetInfo
 	BCH  AssetInfo
+	CHF  AssetInfo
 	DASH AssetInfo
 	EOS  AssetInfo
 	GNO  AssetInfo
@@ -262,6 +263,7 @@ type AssetInfo struct {
 type BalanceResponse struct {
 	ADA  float64 `json:"ADA,string"`
 	BCH  float64 `json:"BCH,string"`
+	CHF  float64 `json:"CHF,string"`
 	DASH float64 `json:"DASH,string"`
 	EOS  float64 `json:"EOS,string"`
 	GNO  float64 `json:"GNO,string"`
