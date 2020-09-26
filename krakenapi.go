@@ -445,7 +445,7 @@ func (api *KrakenApi) DepositAddresses(asset string, method string) (*DepositAdd
 
 // DepositStatus returns all deposits were received
 func (api *KrakenApi) DepositStatus(asset string, method string) (*DepositStatusResponse, error) {
-	resp, err := api.queryPrivate("WithdrawStatus", url.Values{
+	resp, err := api.queryPrivate("DepositStatus", url.Values{
 		"asset":  {asset},
 		"method": {method},
 	}, &DepositStatusResponse{})
